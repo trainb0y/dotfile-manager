@@ -68,6 +68,25 @@ parser_tag_create.add_argument(
 )
 # TODO: allow adding arbitrary dotfiles by name with any other args
 parser_tag_remove = tag_subparsers.add_parser("delete", help="delete tag")
+parser_tag_remove.add_argument(
+    "name",
+    help="the name of the tag to delete",
+    type=str
+)
+
+parser_tag_add = tag_subparsers.add_parser("add", help="add a tag to dotfile(s)")
+parser_tag_add.add_argument(
+    "tag",
+    type=str,
+    help="The tag to add to the dotfiles"
+)
+parser_tag_add.add_argument(
+    "dotfiles",
+    nargs="*",
+    type=str,
+    help="The dotfiles to add the tag to"
+)
+
 
 args = main_parser.parse_args()
 
